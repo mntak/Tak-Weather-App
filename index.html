@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <link href="src/styles.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="weather-app">
+        <form id="search-form">
+          <input type="search" placeholder="Enter city here" id="city-input" />
+          <input class="search" type="submit" value="Search" />
+        </form>
+        <br />
+        <button id="current-location">Current location</button>
+        <div class="city">
+          <h1 id="city">Honolulu</h1>
+          <h3 class="dayTime" id="day-time"></h3>
+        </div>
+        <div class="current-temp" id="current-temp">
+          <h2>
+            <span class="current-temperature" id="temperature">84 </span>
+            <span class="fahrenheit" id="temp-fahrenheit"
+            <span id="fahrenheit">ºF</span></span>
+            </span>
+          </h2>
+          <div class="row justify-content-center">
+          <p class="current-emoji"><img src="images/sun.png" width="50" /></p>
+         
+          <h4>
+              <span id="current-low">58</span>°F/
+              <span id="current-high">88</span>°F
+      
+          </h4>
+        </div>
+      <div class="row justify-content-center weather-data">
+          
+
+        <h5 class="col-3" id="weather-description">Partly Sunny</h5>
+        <h5 class="col-3" id="feels-like">
+          Feels like <span id="feels-like-temp">72</span>º
+        </h5>
+        <h5 class="col-3" id="wind">5 mph Wind</h5>
+        <h5 class="col-3" id="humidity">28% Humidity</h5>
+      </div>
+         
+         
+       
+      </div>
+
+        <div class="row week">
+          <div class="col">Monday</div>
+          <div class="col">Tuesday</div>
+          <div class="col">Wednesday</div>
+          <div class="col">Thursday</div>
+          <div class="col">Friday</div>
+          <div class="col">Saturday</div>
+          <div class="w-100"></div>
+          <div class="col">78°F/88°F</div>
+          <div class="col">78°F/88°F</div>
+          <div class="col">78°F/88°F</div>
+          <div class="col">78°F/88°F</div>
+          <div class="col">78°F/88°F</div>
+          <div class="col">78°F/88°F</div>
+          <div class="w-100"></div>
+          <div class="col"><img src="images/sun.png" width="50" /></div>
+          <div class="col"><img src="images/cloudy.png" width="50" /></div>
+          <div class="col"><img src="images/sun.png" width="60" /></div>
+          <div class="col"><img src="images/cloudy.png" width="50" /></div>
+          <div class="col"><img src="images/cloudy.png" width="50" /></div>
+          <div class="col"><img src="images/sun.png" width="50" /></div>
+        </div>
+      </div>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
