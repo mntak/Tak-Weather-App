@@ -4,8 +4,9 @@ body {
 
 h1 {
   text-align: center;
-  color: bisque;
+  color: rgb(94, 93, 92);
   text-shadow: 2px 2px gray;
+  padding: 5px 5px;
 }
 h3 {
   color: blue;
@@ -28,7 +29,7 @@ h5 {
   height: 600px;
   margin: 50px auto;
   padding: 30px;
-  background: url("../images/beach.jpg");
+
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -42,12 +43,12 @@ h5 {
   color: rgb(48, 46, 46);
   font-weight: bolder;
   font-size: xx-large;
-  background: white;
+  background: url("../images/beach.jpg");
   width: 450px;
   height: 250px;
   margin: 0px auto;
   padding: 30px 20px;
-  opacity: 0.7;
+
   border-radius: 20px;
 }
 
@@ -70,6 +71,7 @@ h5 {
 .search:hover {
   background-color: bisque;
 }
+
 .col-3 {
   color: purple;
   text-transform: capitalize;

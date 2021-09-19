@@ -61,7 +61,7 @@ function showWeather(response) {
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/04d@2x.png`
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   let temperatureElement = document.querySelector("#temperature");
   fahrenheitTemperature = Math.round(response.data.main.temp);
