@@ -30,14 +30,21 @@
           <h3 class="dayTime" id="day-time"></h3>
         </div>
         <div class="current-temp" id="current-temp">
-          <h2>
-            <span class="current-temperature" id="temperature">84 </span>
-            <span class="fahrenheit" id="temp-fahrenheit" id="fahrenheit"
-              >ºF</span
-            >
-          </h2>
+          <span class="current-temperature" id="temperature">84 </span>
+
+          <span class="units"
+            ><a href="#" id="fahrenheit-link" class="active">°F</a> |
+            <a href="#" id="celcius-link">ºC</a></span
+          >
+
           <div class="row justify-content-center">
-            <p class="current-emoji"><img src="images/sun.png" width="50" /></p>
+            <p class="current-emoji">
+              <img
+                src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
+                id="icon"
+                width="50"
+              />
+            </p>
 
             <h4>
               <span id="current-low">58</span>°F/
@@ -76,6 +83,12 @@
           <div class="col"><img src="images/cloudy.png" width="50" /></div>
           <div class="col"><img src="images/sun.png" width="50" /></div>
         </div>
+        <small>
+          <a href="https://github.com/mntak/Tak-Weather-App" target="_blank"
+            >Open-source code</a
+          >
+          , by Mihae Tak
+        </small>
       </div>
     </div>
     <script src="src/index.js"></script>

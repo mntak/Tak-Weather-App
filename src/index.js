@@ -7,7 +7,7 @@ let days = [
   "Wednesday",
   "Thursday",
   "Friday",
-  "Saturday"
+  "Saturday",
 ];
 let day = days[now.getDay()];
 let hour = now.getHours();
@@ -57,6 +57,15 @@ function showWeather(response) {
   let humidity = response.data.main.humidity;
   let currentHumidity = document.querySelector("#humidity");
   currentHumidity.innerHTML = `${humidity}% Humidity`;
+
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/04d@2x.png`
+  );
+  let temperatureElement = document.querySelector("#temperature");
+  fahrenheitTemperature = Math.round(response.data.main.temp);
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
 function search(event) {
@@ -72,8 +81,9 @@ function search(event) {
 
 function showCurrent(response) {
   let h1 = document.querySelector("h1");
-  let temperature = document.querySelector("#temperature");
-  temperature.innerHTML = Math.round(response.data.main.temp);
+  let temperatureElement = document.querySelector("#temperature");
+  fahrenheitTemperature = Math.round(response.data.main.temp);
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
   h1.innerHTML = response.data.name;
 }
 
@@ -95,8 +105,31 @@ function currentData(event) {
   navigator.geolocation.getCurrentPosition(retrievePosition);
 }
 
+function showCelciusTemperature(event) {
+  event.preventDefault();
+  let celciusTemperature = (84 - 32) * (5 / 9);
+  let temperatureElement = document.querySelector("#temperature");
+  fahrenheitLink.classList.remove("active");
+  celciusLink.classList.add("active");
+  temperatureElement.innerHTML = Math.round(celciusTemperature);
+}
+
+function showFahrenheitTemperature(event) {
+  event.preventDefault();
+  fahrenheitLink.classList.add("active");
+  celciusLink.classList.remove("active");
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
 let currentLocation = document.getElementById("current-location");
 currentLocation.addEventListener("click", currentData);
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
+
+let celciusLink = document.querySelector("#celcius-link");
+celciusLink.addEventListener("click", showCelciusTemperature);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
