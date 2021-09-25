@@ -3,62 +3,70 @@ body {
 }
 
 h1 {
-  text-align: center;
+  text-align: left;
   color: rgb(94, 93, 92);
   text-shadow: 2px 2px gray;
   padding: 5px 5px;
+  margin-bottom: 0;
 }
 h3 {
   color: blue;
   font-size: 14px;
-  padding: 20px;
+  text-align: left;
 }
 
-h4 {
-  color: purple;
-  font-size: 16px;
-}
 h5 {
   font-size: 14px;
   padding: 15px 5px;
   margin: 50px auto;
 }
+ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+li {
+  list-style: none;
+  margin: 50;
+  padding: 50;
+  font-size: 16px;
+}
+li:first-letter {
+  text-transform: capitalize;
+}
+.weather-description:first-letter {
+  text-transform: capitalize;
+}
+
+.container {
+  padding: 15px;
+  border: 1px solid #dadde1;
+  border-radius: 20px;
+  max-width: 700px;
+  height: 620px;
+  margin: 50px auto;
+}
 
 .weather-app {
-  max-width: 800px;
-  height: 600px;
-  margin: 50px auto;
-  padding: 30px;
-
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  border: 1px solid #dadde1;
-  border-radius: 20px;
-  text-align: center;
   color: rgb(33, 33, 33);
 }
 
-.current-temp {
+.weather-forecast {
+  margin-top: auto;
+}
+#current-temp {
   color: rgb(48, 46, 46);
   font-weight: bolder;
   font-size: xx-large;
-  background: url("../images/beach.jpg");
-  width: 450px;
-  height: 250px;
-  margin: 0px auto;
-  padding: 30px 20px;
-
-  border-radius: 20px;
 }
 
 .units {
   font-size: 14px;
   color: rgb(33, 33, 33);
   text-decoration: none;
-}
-.col-6 {
-  font-size: 12px;
 }
 
 .week {
@@ -72,11 +80,6 @@ h5 {
   background-color: bisque;
 }
 
-.col-3 {
-  color: purple;
-  text-transform: capitalize;
-}
-
 .weather-app .active {
   color: black;
   cursor: default;
@@ -88,4 +91,17 @@ h5 {
 
 a {
   text-decoration: none;
+}
+
+small {
+  padding: 150px;
+}
+
+.row-week {
+  margin-top: 20px;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
 }

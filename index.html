@@ -25,10 +25,11 @@
         </form>
         <br />
         <button id="current-location">Current location</button>
-        <div class="city">
+        <div class="overview">
           <h1 id="city">Honolulu</h1>
-          <h3 class="dayTime" id="day-time"></h3>
+          <h3>Last updated: <span id="date"></span></h3>
         </div>
+
         <div class="current-temp" id="current-temp">
           <span class="current-temperature" id="temperature">84 </span>
 
@@ -37,60 +38,38 @@
             <a href="#" id="celcius-link">ºC</a></span
           >
 
-          <div class="row justify-content-center">
-            <p class="current-emoji">
-              <img
-                src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
-                id="icon"
-                width="50"
-              />
-            </p>
+          <img
+            src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
+            id="icon"
+            width="100"
+          />
 
-            <h4>
-              <span id="current-low">58</span>°F/
-              <span id="current-high">88</span>°F
-            </h4>
-          </div>
-          <div class="row justify-content-center weather-data">
-            <h5 class="col-3" id="weather-description">Partly Sunny</h5>
-            <h5 class="col-3" id="feels-like">
-              Feels like <span id="feels-like-temp">72</span>º
-            </h5>
-            <h5 class="col-3" id="wind">5 mph Wind</h5>
-            <h5 class="col-3" id="humidity">28% Humidity</h5>
-          </div>
+          <h4>
+            Today's High & Low <br />
+            <span id="current-high">88</span>°F
+            <span id="current-low">58</span>°F/
+          </h4>
         </div>
-
-        <div class="row week">
-          <div class="col">Mon</div>
-          <div class="col">Tues</div>
-          <div class="col">Wed</div>
-          <div class="col">Thurs</div>
-          <div class="col">Fri</div>
-          <div class="col">Sat</div>
-          <div class="w-100"></div>
-          <div class="col">78°F/88°F</div>
-          <div class="col">78°F/88°F</div>
-          <div class="col">78°F/88°F</div>
-          <div class="col">78°F/88°F</div>
-          <div class="col">78°F/88°F</div>
-          <div class="col">78°F/88°F</div>
-          <div class="w-100"></div>
-          <div class="col"><img src="images/sun.png" width="50" /></div>
-          <div class="col"><img src="images/cloudy.png" width="50" /></div>
-          <div class="col"><img src="images/sun.png" width="60" /></div>
-          <div class="col"><img src="images/cloudy.png" width="50" /></div>
-          <div class="col"><img src="images/cloudy.png" width="50" /></div>
-          <div class="col"><img src="images/sun.png" width="50" /></div>
+        <div class="col weather-data">
+          <h5>
+            <span id="weather-description"> Partly Sunny</span><br />
+            Feels like <span id="feels-like">72</span>°<br />
+            <span id="wind">5 mph Wind</span><br />
+            <span id="humidity">28% Humidity</span>
+          </h5>
         </div>
-        <small>
-          <a href="https://github.com/mntak/Tak-Weather-App" target="_blank"
-            >Open-source code,</a
-          >
-          by Mihae Tak
-        </small>
       </div>
+
+      <div class="weather-forecast" id="forecast"></div>
     </div>
+    <footer>
+      <br />
+      <a href="https://github.com/mntak/Tak-Weather-App" target="_blank"
+        >Open-source code,</a
+      >
+      by Mihae Tak
+    </footer>
+
     <script src="src/index.js"></script>
   </body>
 </html>
