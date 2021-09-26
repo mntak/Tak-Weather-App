@@ -4,10 +4,10 @@ body {
 
 h1 {
   text-align: left;
-  color: yellow;
-  font-size: 46px;
-  text-shadow: 2px 2px gray;
-  padding: 5px 5px;
+  color: rgb(238, 216, 188);
+  font-size: 56px;
+  text-shadow: 4px 4px rgb(61, 60, 60);
+  padding: 10px 10px;
   margin-bottom: 0;
 }
 h3 {
