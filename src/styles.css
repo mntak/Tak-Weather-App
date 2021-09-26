@@ -4,7 +4,7 @@ body {
 
 h1 {
   text-align: left;
-  color: rgb(238, 216, 188);
+  color: white;
   font-size: 56px;
   text-shadow: 4px 4px rgb(61, 60, 60);
   padding: 10px 10px;
@@ -14,6 +14,14 @@ h3 {
   color: blue;
   font-size: 14px;
   text-align: left;
+}
+h4 {
+  color: burlywood;
+}
+
+h5 {
+  font-size: 16px;
+  margin: 0px;
 }
 
 ul {
@@ -47,7 +55,7 @@ li:first-letter {
   border: 1px solid #dadde1;
   border-radius: 20px;
   max-width: 700px;
-  height: 620px;
+  height: 680px;
   margin: 50px auto;
   background-image: url("..//images/turtle.jpg");
 }
@@ -63,6 +71,7 @@ li:first-letter {
   color: white;
   font-weight: bolder;
   font-size: 56px;
+  margin-bottom: 5px;
 }
 
 .units {
