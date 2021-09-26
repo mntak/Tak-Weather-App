@@ -115,7 +115,7 @@ function showWeather(response) {
 
   let wind = response.data.wind.speed;
   let currentWind = document.querySelector("#wind");
-  currentWind.innerHTML = `${wind}mph Wind`;
+  currentWind.innerHTML = `${wind} mph Wind`;
 
   let humidity = response.data.main.humidity;
   let currentHumidity = document.querySelector("#humidity");
@@ -192,4 +192,3 @@ let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
 
 search("Honolulu");
-displayForecast();
