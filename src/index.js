@@ -1,78 +1,84 @@
 //Display Day and time
-let now = new Date();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
-let hour = now.getHours();
-let minute = now.getMinutes();
-let months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-let month = months[now.getMonth()];
-let date = now.getDate();
-let year = now.getFullYear();
-let h3 = document.querySelector("h3");
-h3.innerHTML = `Last updated ${hour}: ${minute}<br/> ${day}, ${month} ${date}, ${year}`;
 
+function formatDate(liveDate) {
+  let now = new Date();
+  let hour = now.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  let minutes = now.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[now.getDay()];
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let month = months[now.getMonth()];
+  let date = now.getDate();
+  let year = now.getFullYear();
+  return `Last updated at ${hour}:${minutes}<br /> ${day}, ${month} ${date}, ${year}`;
+}
 //Add a search engine, when searching for a city (i.e. Paris), display the city name on the page after the user submits the form.
-function displayForecast(response) {
-  console.log(response.data.daily);
 
+function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tues"];
-  days.forEach(function (day) {
+
+  forecast.forEach(function (forecastDay) {
     forecastHTML =
       forecastHTML +
-      ` 
-
-<div class="col-2">
-  <div class="weather-forecast-date">${day}</div>
-  <img
-    src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-    alt=""
-    width="42"
-  />
-  <div class="weather-forecast-temperatures">
-    <span class="weather-forecast-temperature-max">88°</span>
-    <span class="weather-forecast-temperature-min">58°</span>
-  </div>
-</div>
-
-`;
+      `
+      <div class="col-2">
+        <div class="weather-forecast-date">${forecastDay.dt}</div>
+        <img
+          src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
+          alt=""
+          width="42"
+        />
+        <div class="weather-forecast-temperatures">
+          <span class="weather-forecast-temperature-max"> ${forecastDay.temp.max}° </span>
+          <span class="weather-forecast-temperature-min"> ${forecastDay.temp.min}° </span>
+        </div>
+      </div>
+  `;
   });
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
 }
-
-function getForecast(coordinates) {
-  console.log(coordinates);
+function retrievePosition(position) {
+  console.log(position);
   let apiKey = "0bb228d4ba422107531b795fe6ca39d9";
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
   let units = "imperial";
-  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.lat}&lon=${coordinates.lon}&units=${units}&appid=${apiKey}`;
-  axios.get(url).then(displayForecast);
+  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
+  axios.get(url).then(showWeather);
 }
-
 function currentCity(city) {
   let apiKey = "0bb228d4ba422107531b795fe6ca39d9";
   let units = "imperial";
@@ -124,9 +130,9 @@ function showWeather(response) {
 
   let dateElement = document.querySelector("#date");
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
-
   fahrenheitTemperature = Math.round(response.data.main.temp);
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+  getForecast(response.data.coord);
 }
 
 function search(event) {
@@ -184,3 +190,6 @@ celciusLink.addEventListener("click", showCelciusTemperature);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
+
+search("Honolulu");
+displayForecast();
