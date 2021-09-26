@@ -1,5 +1,5 @@
 body {
-  font-family: "Style Script", cursive;
+  font-family: "Arial";
 }
 
 h1 {
@@ -73,7 +73,11 @@ li:first-letter {
   font-size: 56px;
   margin-bottom: 5px;
 }
-
+.weather-forecast {
+  color: burlywood;
+  margin-top: 20px;
+  text-align: center;
+}
 .units {
   font-size: 24px;
   color: rgb(33, 33, 33);

@@ -40,6 +40,12 @@ function formatDate(liveDate) {
   return `Last updated at ${hour}:${minutes}<br /> ${day}, ${month} ${date}, ${year}`;
 }
 //Add a search engine, when searching for a city (i.e. Paris), display the city name on the page after the user submits the form.
+function getForecast(coordinates) {
+  let units = "imperial";
+  let apiKey = "0bb228d4ba422107531b795fe6ca39d9";
+  let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
+  axios.get(url).then(displayForecast);
+}
 
 function displayForecast(response) {
   let forecast = response.data.daily;
@@ -47,29 +53,43 @@ function displayForecast(response) {
 
   let forecastHTML = `<div class="row">`;
 
-  forecast.forEach(function (forecastDay) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
       <div class="col-2">
-        <div class="weather-forecast-date">${forecastDay.dt}</div>
+        <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
         <img
-          src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
+          src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"
           alt=""
           width="42"
         />
         <div class="weather-forecast-temperatures">
-          <span class="weather-forecast-temperature-max"> ${forecastDay.temp.max}° </span>
-          <span class="weather-forecast-temperature-min"> ${forecastDay.temp.min}° </span>
+          <span class="weather-forecast-temperature-max"> ${Math.round(
+            forecastDay.temp.max
+          )}° </span>
+          <span class="weather-forecast-temperature-min"> ${Math.round(
+            forecastDay.temp.min
+          )}° </span>
         </div>
       </div>
   `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-  console.log(forecastHTML);
 }
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+  return days[date.getDay()];
+}
+
 function retrievePosition(position) {
   console.log(position);
   let apiKey = "0bb228d4ba422107531b795fe6ca39d9";
@@ -77,13 +97,6 @@ function retrievePosition(position) {
   let lon = position.coords.longitude;
   let units = "imperial";
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
-  axios.get(url).then(showWeather);
-}
-function currentCity(city) {
-  let apiKey = "0bb228d4ba422107531b795fe6ca39d9";
-  let units = "imperial";
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-
   axios.get(url).then(showWeather);
 }
 
@@ -139,10 +152,15 @@ function search(event) {
   event.preventDefault();
   let cityElement = document.querySelector("#city");
   let cityInput = document.querySelector("#city-input");
-  let units = "imperial";
   cityElement.innerHTML = `${cityInput.value}`;
+
+  searchCity(cityInput.value);
+}
+
+function searchCity(city) {
+  let units = "imperial";
   let apiKey = "0bb228d4ba422107531b795fe6ca39d9";
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=${units}`;
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(url).then(showWeather);
 }
 
@@ -191,4 +209,4 @@ celciusLink.addEventListener("click", showCelciusTemperature);
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
 
-search("Honolulu");
+searchCity("Honolulu");
