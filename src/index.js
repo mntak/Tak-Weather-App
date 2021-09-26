@@ -126,7 +126,7 @@ function showWeather(response) {
   let currentFeels = document.querySelector("#feels-like");
   currentFeels.innerHTML = `${feelsLike}°`;
 
-  let wind = response.data.wind.speed;
+  let wind = Math.round(response.data.wind.speed);
   let currentWind = document.querySelector("#wind");
   currentWind.innerHTML = `${wind} mph Wind`;
 
