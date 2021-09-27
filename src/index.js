@@ -209,4 +209,6 @@ celciusLink.addEventListener("click", showCelciusTemperature);
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
 
+let fahrenheitTemperature = null;
+
 searchCity("Honolulu");
